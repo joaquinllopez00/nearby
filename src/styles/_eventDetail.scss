@@ -1,0 +1,41 @@
+.event-detail-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 30rem;
+  background: rgba(250, 250, 250, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  transition: all ease-in-out 0.4s;
+  transform: translateX(92.5%);
+  z-index: 1;
+}
+
+.shown {
+  transform: translateX(0%);
+}
+
+.hide-event {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0.2rem 0.4rem;
+  background: #fafafa;
+  border: none;
+  border-radius: 0 0 0 10px;
+  outline: none;
+}
+
+.arrow-icon {
+  transition: all ease-in-out 0.2s;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.flipped {
+  transform: rotate(180deg);
+}

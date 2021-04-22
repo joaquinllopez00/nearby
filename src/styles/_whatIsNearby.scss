@@ -1,0 +1,27 @@
+.what-is-nearby-container {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 2rem;
+
+  section {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 0rem;
+    margin: 1rem 0rem;
+    overflow: hidden;
+  }
+}
+
+.header-container {
+  height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

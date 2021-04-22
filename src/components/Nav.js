@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { TweenMax, Power3 } from "gsap";
 export const Nav = () => {
   const [toggle, setToggle] = useState(false);
+  let navBar = useRef(null);
 
+  useEffect(() => {
+    console.log(navBar);
+    TweenMax.fromTo(
+      navBar,
+      0.8,
+      {
+        y: -20,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        ease: Power3.easeInOut,
+      },
+    );
+  }, []);
   return (
-    <nav className="nav-container">
+    <nav className="nav-container" ref={(e) => (navBar = e)}>
       <div className="logo">
         <Link to="/" className="logo">
           <h2>NEARBY.</h2>

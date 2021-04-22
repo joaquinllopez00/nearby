@@ -1,5 +1,3 @@
-import { PositionOptions } from "mapbox-gl";
-
 export const setCoords = (pos) => async (dispatch) => {
   // const error = (err) => {
   //   console.warn(`ERROR(${err.code}): ${err.message}`);
