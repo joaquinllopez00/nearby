@@ -1,0 +1,12 @@
+.map-container {
+  height: 92vh;
+  width: 100vw;
+  z-index: 1;
+  *:focus {
+    outline: none;
+  }
+}
+
+.nearby-container {
+  position: relative;
+}

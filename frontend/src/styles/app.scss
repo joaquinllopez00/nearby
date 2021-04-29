@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 4rem;
+  padding: 1rem;
+  z-index: 1;
+}
+
+h2 {
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+p {
+  font-family: "Raleway", sans-serif;
+}
+
+@import "./nav";
+@import "./nearby";
+@import "./eventDetail";
+@import "./whatIsNearby";
+@import "./profile";
