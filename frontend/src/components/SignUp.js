@@ -1,17 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { TweenMax, Power3 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { createUser, signIn } from "../api";
-import { setUser } from "../actions/userActions";
+import { createUser } from "../api";
 
 export const SignUpComponent = () => {
-  let profile = useRef(null);
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const [pathName, setPathName] = useState("");
+  let signup = useRef(null);
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +16,7 @@ export const SignUpComponent = () => {
   const [message, setMessage] = useState("");
   useEffect(() => {
     TweenMax.fromTo(
-      profile,
+      signup,
       1,
       {
         y: -40,
@@ -41,7 +38,7 @@ export const SignUpComponent = () => {
     // setUsername("");
   };
   return (
-    <div className="profile" ref={(e) => (profile = e)}>
+    <div className="sign-container" ref={(e) => (signup = e)}>
       <div className="profile-container">
         <h2>Sign Up</h2>
         <div className="signUp-container">
@@ -66,10 +63,7 @@ export const SignUpComponent = () => {
           <button onClick={() => handleSubmit()}>Submit</button>
         </div>
         <p>
-          Need to sign in? Click{" "}
-          <Link to="/profile/signin" onClick={() => setPathName("signin")}>
-            Here
-          </Link>
+          Need to sign in? Click <Link to="/profile/signin">Here</Link>
         </p>
       </div>
     </div>

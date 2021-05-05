@@ -24,6 +24,8 @@ router.post("/register", async (req, res) => {
     email: req.body.email,
     id: uuidv4(),
     password: hashed,
+    friends: 0,
+    name: "",
     // eventsCompleted: req.body.eventsCompleted,
     // description: req.body.description,
   });
@@ -48,4 +50,25 @@ router.post("/login", async (req, res) => {
   res.json({ message: "Logged In!", user: user });
 });
 
+//edit profile
+router.patch("/", async (req, res) => {
+  try {
+    let user = await User.findOneAndUpdate(
+      { username: req.body.OriginalUsername },
+      {
+        $set: {
+          username: req.body.username,
+          name: req.body.name,
+          description: req.body.description,
+        },
+      },
+      { new: true },
+    );
+    user = await User.findOne({ username: req.body.username });
+
+    res.json({ message: "Worked", updatedUser: user });
+  } catch (err) {
+    res.json({ message: err.message });
+  }
+});
 module.exports = router;

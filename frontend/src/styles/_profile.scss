@@ -1,7 +1,7 @@
 .profile {
   display: flex;
   justify-content: center;
-  align-items: center;
+
   height: 92vh;
 }
 
@@ -18,6 +18,12 @@
   }
 }
 
+.sign-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+}
 .login-container {
   padding: 1rem 0rem;
   display: flex;
@@ -107,4 +113,103 @@
 .icon {
   position: absolute;
   bottom: 22px;
+}
+
+.profile-header-container {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  height: 30vh;
+  width: 60%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description-container {
+  display: flex;
+
+  width: 50%;
+  justify-content: space-between;
+}
+
+.edit-btn-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-profile {
+  outline: none;
+  border: none;
+  padding: 0.5rem 0.5rem;
+
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+}
+
+.settings-btn {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+//______________________________________________________________________________
+//EDIT PROFILE STYLES
+
+.edit-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}
+.edit-header-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  width: 45%;
+
+  .arrow-left {
+    position: absolute;
+    left: 0;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
+
+.edit-content-container {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+
+  input {
+    border: 1px solid darkgrey;
+    padding: 0.2rem 0.2rem;
+    font-size: 1rem;
+    background-color: #fafafa;
+  }
+
+  textarea {
+    border: 1px solid darkgrey;
+    padding: 0.2rem 0.2rem;
+    font-size: 1rem;
+    background-color: #fafafa;
+    resize: vertical;
+    outline: none;
+    font-family: "Raleway", sans-serif;
+  }
+}
+
+.edit-profile-submit {
+  outline: none;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
 }

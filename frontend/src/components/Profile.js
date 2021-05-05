@@ -1,24 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { TweenMax, Power3 } from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { createUser, signIn } from "../api";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
 import { setUser } from "../actions/userActions";
-import { SignInComponent } from "./SignIn";
-import { SignUpComponent } from "./SignUp";
 export const Profile = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.user.user);
-
   let profile = useRef(null);
   const [pathName, setPathName] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [visible, setVisible] = useState(false);
+
   useEffect(() => {
     TweenMax.fromTo(
       profile,
@@ -35,28 +28,46 @@ export const Profile = () => {
     );
     if (window.location.href.split("/")[4]) {
       setPathName(window.location.href.split("/")[4]);
-      console.log("hello");
     } else {
       setPathName("profile");
     }
-    console.log(user);
   }, [user, pathName]);
+
+  const editProfile = () => {
+    history.push("/profile/edit-profile");
+  };
 
   return (
     <div className="profile" ref={(e) => (profile = e)}>
       {user.length !== 0 ? (
-        <h1>PROFILE</h1>
+        <div className="profile-header-container">
+          <h2>{user.username}</h2>
+          <h3>{user.name}</h3>
+          <div className="description-container">
+            <p>Friends: {user.friends}</p>
+            <p>Events Completed: {user.eventsCompleted === undefined ? 0 : user.eventCompleted.length() + 1}</p>
+          </div>
+          <p>{user.description}</p>
+          <div className="edit-btn-container">
+            <button onClick={() => editProfile()} className="edit-profile">
+              Edit Profile
+            </button>
+            <FontAwesomeIcon icon={faCog} className="settings-btn" onClick={() => dispatch(setUser(""))} />
+          </div>
+        </div>
       ) : (
         <>
           {pathName === "profile" && (
-            <div className="profile-nouser-container">
-              <h2>Looks like you aren't logged in,</h2>
-              <p>
-                Sign in{" "}
-                <Link onClick={() => setPathName("signin")} to="/profile/signin">
-                  Here
-                </Link>
-              </p>
+            <div className="sign-container">
+              <div className="profile-nouser-container">
+                <h2>Looks like you aren't logged in,</h2>
+                <p>
+                  Sign in{" "}
+                  <Link onClick={() => setPathName("signin")} to="/profile/signin">
+                    Here
+                  </Link>
+                </p>
+              </div>
             </div>
           )}
         </>

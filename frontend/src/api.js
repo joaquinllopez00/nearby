@@ -52,3 +52,17 @@ export const addToParticipants = async (id, eventId, participants) => {
     return { message: err };
   }
 };
+
+export const editProfilePage = async (OriginalUsername, username, name, description) => {
+  try {
+    const { data } = await axios.patch(`${base_url}/user`, {
+      OriginalUsername: OriginalUsername,
+      username: username,
+      name: name,
+      description: description,
+    });
+    return data;
+  } catch (err) {
+    return { message: err };
+  }
+};

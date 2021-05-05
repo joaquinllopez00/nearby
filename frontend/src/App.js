@@ -10,6 +10,7 @@ import { getEvents } from "./actions/eventActions";
 import { Profile } from "./components/Profile";
 import { SignInComponent } from "./components/SignIn";
 import { SignUpComponent } from "./components/SignUp";
+import { EditProfile } from "./components/EditProfile";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route exact path="/profile/register">
           <SignUpComponent />
+        </Route>
+        <Route exact path="/profile/edit-profile">
+          <EditProfile />
         </Route>
       </Switch>
     </Router>

@@ -1,7 +1,7 @@
 import { TimelineMax, gsap } from "gsap";
 import { Timeline } from "gsap/gsap-core";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useIntersection } from "react-use";
+
 import { useRef, useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);

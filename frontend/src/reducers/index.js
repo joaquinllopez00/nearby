@@ -7,7 +7,7 @@ const persistConfig = {
   key: "primary",
   storage: storage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ["coordinates"],
+  whitelist: ["coordinates", "user"],
 };
 
 const pReducer = persistReducer(persistConfig, rootReducer);

@@ -50,7 +50,7 @@ router.patch("/", async (req, res) => {
       { new: true },
     );
     event = await Event.findOne({ eventId: req.body.id });
-    console.log(event);
+
     res.json({ message: "Worked", updatedEvent: event });
   } catch (err) {
     res.json({ message: err.message });
