@@ -11,6 +11,7 @@ import { Profile } from "./components/Profile";
 import { SignInComponent } from "./components/SignIn";
 import { SignUpComponent } from "./components/SignUp";
 import { EditProfile } from "./components/EditProfile";
+import { HostAnEvent } from "./components/Host";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route exact path="/profile">
           <Profile />
+        </Route>
+        <Route exact path="/host-an-event">
+          <HostAnEvent />
         </Route>
         <Route exact path="/profile/signin">
           <SignInComponent />

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import loader from "../assets/loading.gif";
 import { showEventDetail } from "../actions/eventActions";
 import { EventDetail } from "./EventDetail";
-
+import { getAddress } from "../api";
 // const Events = [
 //   {
 //     name: "Community Clean-Up",
@@ -87,7 +87,6 @@ export const Nearby = () => {
       setLoading(false);
 
       if (window.location.href.split("/")[3] === "nearby") {
-        console.log(Events, "nearby useffect");
         createMap(coords);
       } else {
         return;
@@ -104,7 +103,7 @@ export const Nearby = () => {
     });
 
     map.addControl(new mapboxgl.NavigationControl(), "bottom-left");
-
+    console.log(Events);
     map.on("load", async () => {
       map.addSource("CommunityEvents", {
         type: "geojson",
@@ -115,7 +114,7 @@ export const Nearby = () => {
               type: "Feature",
               properties: {
                 description: event.description,
-                id: event.id,
+                id: event._id,
               },
               geometry: {
                 type: "Point",
@@ -188,7 +187,7 @@ export const Nearby = () => {
         },
         paint: {
           "circle-radius": 10,
-          "circle-color": "Yellow",
+          "circle-color": "#FFCC33",
         },
       });
 

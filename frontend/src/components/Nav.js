@@ -48,6 +48,9 @@ export const Nav = () => {
           <li className="nearby">
             <Link to="/nearby">See whats Nearby.</Link>
           </li>
+          <li className="nearby">
+            <Link to="/host-an-event">Host an Event</Link>
+          </li>
           <li>
             <Link to="/profile">{user.user.length !== 0 ? "Profile" : "Sign In"}</Link>
           </li>

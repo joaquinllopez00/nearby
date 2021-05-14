@@ -11,8 +11,9 @@
   justify-content: center;
   align-items: center;
   background: #fafafa;
-  height: 40vh;
-  width: 40%;
+  height: 50vh;
+  width: 30vw;
+
   p {
     margin-top: 1rem;
   }
@@ -24,6 +25,16 @@
   align-items: center;
   height: 92vh;
 }
+
+.sign-backdrop {
+  height: 50vh;
+  width: 30vw;
+  position: absolute;
+  left: 33.5vw;
+  top: 26.5vh;
+  background-color: #fafafa;
+}
+
 .login-container {
   padding: 1rem 0rem;
   display: flex;
@@ -107,7 +118,14 @@
 }
 
 .message-container {
-  height: 2rem;
+  height: auto;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 30px;
+  color: red;
 }
 
 .icon {
@@ -123,15 +141,36 @@
   width: 60%;
   flex-direction: column;
   align-items: center;
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
 }
 
-.description-container {
+.profile-identifier-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 9vh;
+}
+
+.profile-detail-container {
   display: flex;
 
   width: 50%;
   justify-content: space-between;
 }
 
+.profile-description-container {
+  width: 45%;
+  height: auto;
+  overflow: hidden;
+}
 .edit-btn-container {
   position: absolute;
   bottom: 0;

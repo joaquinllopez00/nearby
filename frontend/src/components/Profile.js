@@ -41,13 +41,17 @@ export const Profile = () => {
     <div className="profile" ref={(e) => (profile = e)}>
       {user.length !== 0 ? (
         <div className="profile-header-container">
-          <h2>{user.username}</h2>
-          <h3>{user.name}</h3>
-          <div className="description-container">
+          <div className="profile-identifier-container">
+            <h2>{user.username}</h2>
+            <h3>{user.name}</h3>
+          </div>
+          <div className="profile-detail-container">
             <p>Friends: {user.friends}</p>
             <p>Events Completed: {user.eventsCompleted === undefined ? 0 : user.eventCompleted.length() + 1}</p>
           </div>
-          <p>{user.description}</p>
+          <div className="profile-description-container">
+            <p>{user.description}</p>
+          </div>
           <div className="edit-btn-container">
             <button onClick={() => editProfile()} className="edit-profile">
               Edit Profile

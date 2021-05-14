@@ -6,71 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { showEventDetail, hideEventDetail } from "../actions/eventActions";
 import { addToParticipants } from "../api";
 import locked from "../assets/locked.png";
-// const Events = [
-//   {
-//     name: "Community Clean-Up",
-//     type: "Community",
-//     time: "12:05pm",
-//     addr: "Indianapolis, IN",
-//     id: 1,
-//     location: [-86.17434153813191, 39.73411177758943],
-//     description: "Farts upon farts",
-//   },
-//   {
-//     name: "Park Clean-Up",
-//     type: "Community",
-//     time: "12:15pm",
-//     addr: "Indianapolis, IN",
-//     id: 2,
-//     location: [-86.11599638182919, 39.740674968989815],
-//     description: "words words words",
-//   },
-//   {
-//     name: "Soup Kitchen",
-//     type: "Community",
-//     time: "11:05am",
-//     addr: "Indianapolis, IN",
-//     id: 3,
-//     location: [-86.13018582931184, 39.743135826992614],
-//     description: "words words words",
-//   },
-//   {
-//     name: "Rebuilding Apartments",
-//     type: "Community",
-//     time: "10:00am",
-//     id: 4,
-//     addr: "Indianapolis, IN",
-//     location: [-86.1176545496681, 39.74726050336097],
-//     description: "words words words",
-//   },
-//   {
-//     name: "Food Drive",
-//     type: "Party",
-//     time: "2:00pm",
-//     addr: "Indianapolis, IN",
-//     id: 5,
-//     location: [-86.15569846427867, 39.770011077887574],
-//     description: "words words words",
-//   },
-//   {
-//     name: "Prayer Walk",
-//     type: "Religious",
-//     time: "2:00pm",
-//     addr: "Indianapolis, IN",
-//     id: 6,
-//     location: [-86.15369846427867, 39.770011077887674],
-//     description: "words words words",
-//   },
-//   {
-//     name: "Neighborhood Bonfire",
-//     type: "Party",
-//     time: "12:05pm",
-//     addr: "Indianapolis, IN",
-//     id: 7,
-//     location: [-86.15434153813191, 39.73411177758943],
-//     description: "Farts upon farts",
-//   },
-// ];
 
 export const EventDetail = (eventDetail) => {
   const { showEvent } = useSelector((state) => state.events);
@@ -81,11 +16,22 @@ export const EventDetail = (eventDetail) => {
   useEffect(() => {
     let event = events.filter((event) => eventDetail.eventId === event._id);
     setEvent(event);
-    console.log(event);
+    let eventType = event[0].type;
+    switch (eventType) {
+      case "Religious":
+        setColor("#FFCC33");
+        break;
+      case "Party":
+        setColor("pink");
+        break;
+      default:
+        setColor("black");
+    }
   }, [eventDetail]);
 
   const [event, setEvent] = useState(null);
   const [password, setPassword] = useState("");
+  const [color, setColor] = useState("");
   const handleEvent = () => {
     if (showEvent === false) {
       dispatch(showEventDetail());
@@ -115,12 +61,12 @@ export const EventDetail = (eventDetail) => {
           <>
             <div className="event-header">
               <h2>{event[0].title}</h2>
+              {event[0].private === true ? <p>This event is private</p> : ""}
               <div className="event-subheader">
                 <div className="type-container">
                   <p>Type: &nbsp;</p>
-                  <p style={{ color: "Pink" }}> {event[0].type}</p>
+                  <p style={{ color: `${color}` }}> {event[0].type}</p>
                 </div>
-
                 <p>Host: {event[0].host}</p>
               </div>
             </div>
@@ -148,7 +94,22 @@ export const EventDetail = (eventDetail) => {
                   </div>
                 </div>
               ) : (
-                <p>This event is not private</p>
+                <div className="public-container">
+                  <div className="public-description-container">
+                    <h3>Details</h3>
+                    <div className="public-details-container">
+                      <p>{event[0].description}</p>
+                      <div className="public-wwt-container">
+                        <h3>When:</h3>
+                        <p>{event[0].time}</p>
+                      </div>
+                      <div className="public-wwt-container">
+                        <h3>Where:</h3>
+                        <p>{event[0].address}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           </>
